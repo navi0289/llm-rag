@@ -4,10 +4,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(CURL REQUIRED)
 
-add_executable(chunk_demo examples/chunk_demo.cpp)
-target_include_directories(chunk_demo PRIVATE include)
-target_link_libraries(chunk_demo CURL::libcurl)
-
-add_executable(basic_rag examples/basic_rag.cpp)
-target_include_directories(basic_rag PRIVATE include)
-target_link_libraries(basic_rag CURL::libcurl)
+foreach(ex basic_rag chunker file_rag)
+    add_executable(${ex} examples/${ex}.cpp)
+    target_include_directories(${ex} PRIVATE include)
+    target_link_libraries(${ex} CURL::libcurl)
+    target_compile_options(${ex} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/W4>
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-Wall>
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-Wextra>
+    )
+endforeach()

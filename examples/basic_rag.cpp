@@ -2,32 +2,45 @@
 #include "llm_rag.hpp"
 #include <cstdlib>
 #include <iostream>
+
 int main() {
-    const char* ekey = std::getenv("OPENAI_API_KEY");
-    const char* lkey = std::getenv("OPENAI_API_KEY");
-    if (!ekey || !ekey[0]) { std::cerr << "OPENAI_API_KEY not set\n"; return 1; }
+    const char* key = std::getenv("OPENAI_API_KEY");
+    if (!key || !key[0]) { std::cerr << "OPENAI_API_KEY not set\n"; return 1; }
+
     llm::RagConfig cfg;
-    cfg.embed_api_key = ekey;
-    cfg.llm_api_key   = lkey;
+    cfg.embed_api_key = key;
+    cfg.llm_api_key   = key;
     cfg.chunk_size    = 200;
-    cfg.chunk_overlap = 30;
-    cfg.top_k         = 2;
-    cfg.index_path    = ".rag_demo";
+    cfg.chunk_overlap = 40;
+    cfg.top_k         = 3;
+    cfg.index_path    = ".rag_demo_index";
+
     llm::RagPipeline rag(cfg);
-    // Ingest 3 hardcoded passages
-    rag.ingest("The Eiffel Tower was built in 1889 for the World Fair in Paris. "
-               "It was designed by Gustave Eiffel and stands 330 meters tall.", "paris_doc");
-    rag.ingest("Photosynthesis is the process by which plants use sunlight, water, "
-               "and carbon dioxide to produce oxygen and energy in the form of glucose.", "biology_doc");
-    rag.ingest("The Python programming language was created by Guido van Rossum "
-               "and first released in 1991. It emphasizes code readability.", "python_doc");
-    std::cout << "Ingested " << rag.chunk_count() << " chunks.\n\n";
-    std::string question = "Who designed the Eiffel Tower?";
-    std::cout << "Question: " << question << "\n";
+
+    // Ingest knowledge base
+    rag.ingest(
+        "The mitochondria is the powerhouse of the cell. "
+        "It produces ATP through cellular respiration. "
+        "Mitochondria have their own DNA, separate from the cell nucleus. "
+        "They are thought to have originated from ancient bacteria (endosymbiosis).",
+        "biology"
+    );
+    rag.ingest(
+        "The Eiffel Tower was built by Gustave Eiffel for the 1889 World's Fair in Paris. "
+        "It stands 330 meters tall and was the world's tallest structure for 41 years. "
+        "It was originally intended to be dismantled after 20 years.",
+        "history"
+    );
+
+    rag.save_index();
+    std::cout << "Indexed " << rag.chunk_count() << " chunks.\n\n";
+
+    // Query
+    std::string question = "What produces ATP in cells?";
     auto result = rag.query(question);
-    std::cout << "\nRetrieved " << result.retrieved_chunks.size() << " chunks:\n";
-    for (const auto& c : result.retrieved_chunks)
-        std::cout << "  [" << c.source << "] " << c.text.substr(0, 80) << "...\n";
-    std::cout << "\nAnswer: " << result.answer << "\n";
+
+    std::cout << "Q: " << question << "\n";
+    std::cout << "A: " << result.answer << "\n\n";
+    std::cout << "Retrieved " << result.retrieved_chunks.size() << " chunks.\n";
     return 0;
 }

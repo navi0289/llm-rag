@@ -1,4 +1,5 @@
 #pragma once
+#define NOMINMAX
 
 // llm_rag.hpp -- Zero-dependency single-header C++ retrieval-augmented generation.
 // Chunk text, embed via OpenAI, store in flat-file vector index, retrieve, generate.

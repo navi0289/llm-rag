@@ -1,21 +1,15 @@
-# CLAUDE.md — llm-rag
+# CLAUDE.md -- llm-rag
 
 ## Build
 ```bash
 cmake -B build && cmake --build build
 ```
 
-## Key Constraint: SINGLE HEADER
-`include/llm_rag.hpp` is the entire library. Never split into multiple files.
+## THE ONE RULE: SINGLE HEADER
+`include/llm_rag.hpp` is the entire library. Never split it.
 
-## Implementation Guard
-```cpp
-#define LLM_RAG_IMPLEMENTATION
-#include "llm_rag.hpp"
-```
-
-## Common Mistakes
-- Splitting the header
-- Adding dependencies beyond libcurl
-- Using exceptions in hot paths
-- Forgetting RAII for resource handles
+## Common Notes
+- Index stored as binary file (not JSONL)
+- Chunking tries to break at sentence boundaries (. ! ?)
+- Augmented prompt format: "Context:\n[1] ...\n\nQuestion: ...\nAnswer:"
+- embed_text and complete are private helpers using libcurl
